@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="registerform">
+        <center>
+            <table border="1">
+                <tr>
+                    <th colspan="2">User Registration</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="name"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" id="password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </center>
+    </form>
+    <script>
+        document.getElementById("registerform");
+        addEventListener("submit", function(event){
+
+        event.preventDefault();
+
+        let name, email, password;
+        name = document.getElementById("name").value;
+        email = this.document.getElementById("email").value;
+        password = this.document.getElementById("password").value;
+
+    const userdata={
+        name:name,
+        email:email,
+        password:password
+    };
+
+    users = JSON.parse(localStorage.getItem("users")) ||[];
+    users.push(userdata);
+    localStorage.setItem("users", JSON.stringify(users));
+    window.location.href="userlist.html";
+})
+    </script>
+</body>
+
+</html>

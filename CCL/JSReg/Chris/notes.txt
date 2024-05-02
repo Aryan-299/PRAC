@@ -1,0 +1,20 @@
+document.getelementbyID(form ka id)
+addEventListener("submit",function("event"){
+    event.preventDefault();
+
+    let name=document.getelementbyID("name")
+    let email=document.getelementbyID("email")
+    let password=document.getelementbyID("password")
+
+    var userdata={
+        Name:name;
+        Email:email;
+        Password:password;
+    }
+    users=JSON.parse(localstorage.getItem("users)) || [];
+    users.push(userdata);
+    localstorage.setItem("users",JSON.stringify(users));
+    window.location.href="userlist.html"
+})
+
+mongodb://localhost:27017/

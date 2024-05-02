@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Creator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <h1>Table Creator</h1>
+  <p>Enter the number of rows and columns for the first and second table (separated by #) in the following format:</p>
+  <p>Example: 3#3#3 (for 3x3 tables) or 3#3#2 (for a 3x3 and 3x2 table)</p>
+
+  <input type="text" id="input-row" placeholder="Enter no of rows"><br><br>
+  <input type="text" id="input-col" placeholder="Enter no of columns"><br><br>
+  
+  <h2 data-role="header"> Table 1</h2>
+  <input type="text" id="input-val1" placeholder="Enter first integer"><br><br>
+  <button type="button" onclick="myf1()">Create Table 1</button>
+  <div id="tablecontainer">
+
+  </div>
+  <h2 data-role="header"> Table 2</h2>
+  <input type="text" id="input-val2" placeholder="Enter first integer"><br><br>
+  <button type="button" onclick="myf2()">Create Table 2</button>
+  <div id="tablecontainer2">
+
+  </div><br>
+  <button type="button" onclick="myf3()">Create the Multiplication Table</button>
+    <div class="tablecontainer3">
+
+  </div>
+  <script>
+    let table1, table2;
+
+    function myf1(){
+        const x=parseInt(document.getElementById("input-row").value);
+        const y=parseInt(document.getElementById("input-col").value);
+        const z=parseInt(document.getElementById("input-val1").value);
+        let a=z;
+        table1 =document.createElement('table');
+        for(let i=0;i<x;i++)
+        {
+            let row =document.createElement('tr');
+            for(let j=0;j<y;j++)
+            {
+                let data = document.createElement('td');
+                data.innerHTML = (i+1)*(a+j);
+                row.appendChild(data);
+            }
+            table1.appendChild(row);
+        }
+        tablecontainer.appendChild(table1);
+    }
+    function myf2(){
+        const x=parseInt(document.getElementById("input-row").value);
+        const y=parseInt(document.getElementById("input-col").value);
+        const w=parseInt(document.getElementById("input-val2").value);
+        let b=w;
+        table2 =document.createElement('table');
+        for(let i=0;i<x;i++)
+        {
+            let row =document.createElement('tr');
+            for(let j=0;j<y;j++)
+            {
+                let data = document.createElement('td');
+                data.innerHTML = (i+1)*(b+j);
+                row.appendChild(data);
+            }
+            table2.appendChild(row);
+        }
+        tablecontainer2.appendChild(table2);
+    }
+    function myf3(){
+        const x=parseInt(document.getElementById("input-row").value);
+        const y=parseInt(document.getElementById("input-col").value);
+        const table =document.createElement('table');
+        for(let i=0;i<x;i++)
+        {
+            let row =document.createElement('tr');
+            for(let j=0;j<y;j++)
+            {
+                let data = document.createElement('td');
+                const value1 = parseInt(table1.rows[i].cells[j].innerHTML);
+                const value2 = parseInt(table2.rows[i].cells[j].innerHTML);
+                data.innerHTML = value1 * value2;
+                row.appendChild(data);
+            }
+            table.appendChild(row);
+        }
+        document.querySelector('.tablecontainer3').innerHTML = '';
+        document.querySelector('.tablecontainer3').appendChild(table);
+    }
+  </script>
+  </body>
+  </html>

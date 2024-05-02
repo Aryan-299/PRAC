@@ -1,0 +1,31 @@
+<!-- userlist.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>User List</title>
+</head>
+<body>
+    <h2>User List</h2>
+    <datalist id="users">
+        <!-- User data will be populated here -->
+    </datalist>
+    <a href="index.html">Fuck go back</a>
+
+    <script>
+        // Retrieve user data from localStorage
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Populate the data list with user data
+        var dataList = document.getElementById("users");
+        users.forEach(function(user) {
+            var option = document.createElement("option");
+            option.value = user.username + " (" + user.email + ")";
+            dataList.appendChild(option);
+        });
+    </script>
+</body>
+</html>
